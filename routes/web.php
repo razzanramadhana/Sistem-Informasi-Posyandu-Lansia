@@ -57,9 +57,7 @@ Route::get('/rujukan', function () {
     return view('rujukan');
 });
 
-Route::get('/data-pasien', function () {
-    return view('data pasien');
-});
+
 
 Route::get('/detail-pasien', function () {
     return view('detail pasien');
@@ -92,14 +90,14 @@ Route::post('/store-lansia', [TambahkanLansiaController::class, 'store'])->name(
 
 use App\Http\Controllers\ShowHasilKesehatanController;
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/hasil-kesehatan', [ShowHasilKesehatanController::class, 'index'])->name('hasil-kesehatan');
-});
+Route::get('/hasil-kesehatan', [ShowHasilKesehatanController::class, 'index'])->name('hasil.kesehatan');
+
+use App\Http\Controllers\StatusRujukanController;
+
+Route::get('/status-rujukan', [StatusRujukanController::class, 'index'])->name('status.rujukan');
 
 
+use App\Http\Controllers\DataLansiaController;
 
-
-
-
-
+Route::get('data-pasien', [DataLansiaController::class, 'index'])->name('data pasien');
 

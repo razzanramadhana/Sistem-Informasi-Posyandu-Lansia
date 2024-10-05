@@ -13,18 +13,28 @@ class ShowHasilKesehatanController extends Controller
         // Get the currently authenticated user
         $user = Auth::user();
 
-        // Check if the user has the 'wali' role
-        if ($user && $user->role === 'wali') {
-            // Fetch health results for the elderly associated with the guardian (wali)
-            $hasilKesehatan = HasilKesehatan::whereHas('lansia', function ($query) use ($user) {
-                $query->where('id_user', $user->id); // 'id_user' represents the authenticated wali
-            })->with('kunjungan')->get();
-
-            // Return view with the fetched data
-            return view('hasil kesehatan', compact('hasilKesehatan')); // Pastikan nama view sesuai
-        } else {
-            // If the user is not a guardian, redirect back or return an error
-            return redirect()->back()->with('error', 'You do not have permission to view this data.');
+        // Debugging: Check if user is authenticated and has 'wali' role
+        if (!$user) {
+            dd('User not authenticated');
         }
+        if ($user->role !== 'wali') {
+            dd('User is not a wali. Current role: ' . $user->role);
+        }
+
+        // Fetch health results for the elderly associated with the guardian (wali)
+        $hasilKesehatan = HasilKesehatan::whereHas('lansia', function ($query) use ($user) {
+            $query->where('id_user', $user->id);
+        })->with('kunjungan')->get();
+
+        // Debugging: Check if any results were fetched
+        if ($hasilKesehatan->isEmpty()) {
+            dd('No health results found for this wali');
+        }
+
+        // Debugging: Display the fetched data
+        dd($hasilKesehatan->toArray());
+
+        // Return view with the fetched data
+        return view('hasil_kesehatan', compact('hasilKesehatan'));
     }
 }
