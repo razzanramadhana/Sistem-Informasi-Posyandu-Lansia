@@ -21,17 +21,17 @@ class Kunjungan extends Model
 
     public function jadwal()
     {
-        return $this->belongsTo(Jadwal_Posyandu::class, 'id_jadwal', 'id_jadwal');
+        return $this->belongsTo(JadwalPosyandu::class, 'id_jadwal', 'id_jadwal');
     }
 
     public function lansia()
     {
-        return $this->belongsTo(Lansia::class, 'id_lansia', 'id_lansia');
+        return $this->belongsTo(Lansia::class, 'id_lansia');
     }
 
     public function hasil_kesehatan()
     {
-        return $this->hasOne(Hasil_Kesehatan::class, 'id_kunjungan', 'id_kunjungan');
+        return $this->hasOne(HasilKesehatan::class, 'id_kunjungan', 'id_kunjungan');
     }
 
     public function rujukan()

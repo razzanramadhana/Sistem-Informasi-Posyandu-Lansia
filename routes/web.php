@@ -3,8 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileWaliController;
+use App\Http\Controllers\TampilLansia;
+use App\Http\Controllers\TambahkanLansiaController;
+use App\Http\Controllers\HasilKesehatanController;
+use App\Http\Controllers\DataLansiaController;
+use App\Http\Controllers\RujukanController;
+use App\Http\Controllers\StatusRujukanController;
+use App\Http\Controllers\JadwalNakesController;
+use App\Http\Controllers\KelolaKunjunganController;
 
-
+// Routes
 Route::get('/', function () {
     return view('login');
 });
@@ -57,11 +67,10 @@ Route::get('/rujukan', function () {
     return view('rujukan');
 });
 
-
-
 Route::get('/detail-pasien', function () {
     return view('detail pasien');
 });
+
 Auth::routes();
 
 Route::get('/register', [RegistrasiController::class, 'showRegistrationForm'])->name('register');
@@ -72,45 +81,56 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-use App\Http\Controllers\DashboardController;
-
+// Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-
-use App\Http\Controllers\ProfileWaliController;
-
 Route::get('/dashboard', [ProfileWaliController::class, 'show'])->middleware('auth')->name('dashboard');
 
-use App\Http\Controllers\TampilLansia;
-
+// Profil Lansia
 Route::get('/profil-lansia', [TampilLansia::class, 'index'])->name('profil-lansia');
-use App\Http\Controllers\TambahkanLansiaController;
 
+// Tambah Lansia
 Route::get('/create-lansia', [TambahkanLansiaController::class, 'create'])->name('create-lansia');
 Route::post('/store-lansia', [TambahkanLansiaController::class, 'store'])->name('store-lansia');
 
-use App\Http\Controllers\HasilKesehatanController;
-
+// Hasil Kesehatan
 Route::get('/hasil-kesehatan', [HasilKesehatanController::class, 'index'])->name('hasil.kesehatan');
 
-
-use App\Http\Controllers\DataLansiaController;
-
+// Data Pasien
 Route::get('/data-pasien', [DataLansiaController::class, 'index'])->name('data pasien');
 Route::get('/data-pasien/{id}', [DataLansiaController::class, 'show'])->name('detail pasien');
+Route::get('/lansia/{id}', [DataLansiaController::class, 'show'])->name('lansia.showdarirujukan');
 
-use App\Http\Controllers\RujukanController;
-
+// Rujukan
 Route::resource('/rujukan', RujukanController::class);
 Route::put('rujukan/{rujukan}', [RujukanController::class, 'update'])->name('rujukan.update');
 Route::get('rujukan/fetchKunjungan', [RujukanController::class, 'fetchKunjungan'])->name('rujukan.fetchKunjungan');
-Route::get('/lansia/{id}', [DataLansiaController::class, 'show'])->name('lansia.showdarirujukan');
 
-
-use App\Http\Controllers\StatusRujukanController;
-
+// Status Rujukan
 Route::get('/status-rujukan', [StatusRujukanController::class, 'index'])->name('status rujukan');
 
-use App\Http\Controllers\JadwalNakesController;
-
+// Jadwal Nakes
 Route::get('/jadwal-nakes', [JadwalNakesController::class, 'index'])->name('jadwal.nakes');
 
+// Kelola Kunjungan
+Route::middleware(['auth'])->group(function () {
+    Route::get('/kelola-kunjungan', [KelolaKunjunganController::class, 'index'])->name('kelola-kunjungan');
+    Route::get('/tambah-kunjungan', [KelolaKunjunganController::class, 'create'])->name('tambah-kunjungan');
+    Route::get('/edit-kunjungan/{id}', [KelolaKunjunganController::class, 'edit'])->name('edit-kunjungan');
+    Route::post('/edit-kunjungan/{id}', [KelolaKunjunganController::class, 'update'])->name('update-kunjungan');
+    Route::delete('/hapus-kunjungan/{id}', [KelolaKunjunganController::class, 'destroy'])->name('hapus-kunjungan');
+    Route::post('/store-kunjungan', [KelolaKunjunganController::class, 'store'])->name('store-kunjungan');
+});
+
+use App\Http\Controllers\InputHasilKesehatanController;
+
+Route::get('/dashboard', function () {
+    return view('dashboard'); // Ganti dengan view dashboard Anda
+});
+
+
+Route::get('/input-hasil-kesehatan', [InputHasilKesehatanController::class, 'create'])->name('input hasil kesehatan');
+Route::post('/input-hasil-kesehatan', [InputHasilKesehatanController::class, 'store'])->name('input-hasil-kesehatan.store');
+
+
+// Rute untuk melihat hasil kesehatan
+Route::get('/input-hasil-kesehatan', [InputHasilKesehatanController::class, 'index'])->name('input hasil kesehatan');

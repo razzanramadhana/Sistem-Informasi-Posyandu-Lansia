@@ -9,11 +9,11 @@ class HasilKesehatan extends Model
 {
     use HasFactory;
 
-    protected $table = 'Hasil_Kesehatan';
-    protected $primaryKey = 'id_hasil_kesehatan';
-    public $timestamps = false;
+    protected $table = 'Hasil_Kesehatan'; // Nama tabel sesuai dengan database
+    protected $primaryKey = 'id_hasil_kesehatan'; // Primary key
 
     protected $fillable = [
+        'id_lansia',
         'id_kunjungan',
         'berat_badan',
         'tinggi_badan',
@@ -22,13 +22,14 @@ class HasilKesehatan extends Model
         'kolesterol',
     ];
 
-    public function kunjungan()
-    {
-        return $this->belongsTo(Kunjungan::class, 'id_kunjungan', 'id_kunjungan');
-    }
-
+    // Definisikan relasi dengan model Lansia dan Kunjungan jika perlu
     public function lansia()
     {
-        return $this->belongsTo(Lansia::class, 'id_lansia', 'id_lansia');
+        return $this->belongsTo(Lansia::class, 'id_lansia');
+    }
+
+    public function kunjungan()
+    {
+        return $this->belongsTo(Kunjungan::class, 'id_kunjungan');
     }
 }

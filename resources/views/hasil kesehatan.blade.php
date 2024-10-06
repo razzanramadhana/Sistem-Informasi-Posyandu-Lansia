@@ -50,7 +50,6 @@
                                 <th class="border border-gray-300 p-2">Tinggi Badan</th>
                                 <th class="border border-gray-300 p-2">Gula Darah</th>
                                 <th class="border border-gray-300 p-2">Kolesterol</th>
-                                <th class="border border-gray-300 p-2">Komentar dari Nakes</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,7 +62,6 @@
                                     <td class="border border-gray-300 p-2">{{ $hasil->tinggi_badan }}</td>
                                     <td class="border border-gray-300 p-2">{{ $hasil->gula_darah }}</td>
                                     <td class="border border-gray-300 p-2">{{ $hasil->kolesterol }}</td>
-                                    <td class="border border-gray-300 p-2">{{ $hasil->kunjungan->komentar_nakes }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
