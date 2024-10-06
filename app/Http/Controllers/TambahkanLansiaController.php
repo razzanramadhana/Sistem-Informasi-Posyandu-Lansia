@@ -10,7 +10,7 @@ class TambahkanLansiaController extends Controller
 {
     public function create()
     {
-        return view('tambahkan-lansia'); // Return the view for adding Lansia
+        return view('tambahkan lansia'); // Return the view for adding Lansia
     }
 
     public function store(Request $request)

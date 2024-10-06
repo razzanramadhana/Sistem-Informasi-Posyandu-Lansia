@@ -39,41 +39,32 @@
                 <h2 class="text-2xl font-bold mb-4">Jadwal Nakes</h2>
                 <p class="text-gray-600 mb-6">September 2024</p>
                 
+                <div class="flex-1 p-8 bg-gray-100">
+                <h2 class="text-2xl font-bold mb-4">Jadwal Nakes</h2>
+                <p class="text-gray-600 mb-6">September 2024</p>
+                
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white border border-gray-300">
                         <thead>
                             <tr>
-                                <th class="bg-gray-200 p-3 border border-gray-300 text-left text-sm font-semibold">Hari</th>
+                                <th class="bg-gray-200 p-3 border border-gray-300 text-left text-sm font-semibold">ID Jadwal</th>
                                 <th class="bg-gray-200 p-3 border border-gray-300 text-left text-sm font-semibold">Tanggal</th>
                                 <th class="bg-gray-200 p-3 border border-gray-300 text-left text-sm font-semibold">Jam</th>
-                                <th class="bg-gray-200 p-3 border border-gray-300 text-left text-sm font-semibold">Pasien</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-gray-50 hover:bg-yellow-100 transition duration-200 ease-in-out">
-                                <td class="p-3 border border-gray-300">Senin</td>
-                                <td class="p-3 border border-gray-300">2/09/2024</td>
-                                <td class="p-3 border border-gray-300">07:00 - 9:00 am</td>
-                                <td class="p-3 border border-gray-300">Ahmad Fajar Pratama<br>Siti Melati Aisyah<br>Rian Dwi Septiara</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-yellow-100 transition duration-200 ease-in-out">
-                                <td class="p-3 border border-gray-300">Rabu</td>
-                                <td class="p-3 border border-gray-300">4/09/2024</td>
-                                <td class="p-3 border border-gray-300">07:00 - 9:00 am</td>
-                                <td class="p-3 border border-gray-300">Nural Ayu Permata</td>
-                            </tr>
-                            <tr class="bg-gray-50 hover:bg-yellow-100 transition duration-200 ease-in-out">
-                                <td class="p-3 border border-gray-300">Jumat</td>
-                                <td class="p-3 border border-gray-300">6/09/2024</td>
-                                <td class="p-3 border border-gray-300">10:00 - 12:00 am</td>
-                                <td class="p-3 border border-gray-300">Dian Citra Ramadhani<br>Aditya Bayu Putra</td>
-                            </tr>
+                            @foreach ($finalJadwalNakes as $jadwal) <!-- Updated variable name -->
+                                <tr class="bg-gray-50 hover:bg-yellow-100 transition duration-200 ease-in-out">
+                                    <td class="p-3 border border-gray-300">{{ $jadwal['id'] }}</td> <!-- Use 'id' instead of 'id_jadwal' -->
+                                    <td class="p-3 border border-gray-300">{{ $jadwal['tanggal'] }}</td> <!-- Use 'tanggal' instead of 'tanggal_jadwal' -->
+                                    <td class="p-3 border border-gray-300">{{ $jadwal['jam'] }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
     <footer class="bg-blue-600 text-white text-center py-4">
         © 2024 ALL RIGHTS RESERVED
     </footer>

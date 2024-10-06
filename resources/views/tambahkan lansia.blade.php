@@ -18,11 +18,12 @@
         </header>
 
         <div class="flex flex-1">
-            <aside class="bg-white w-64 p-5 shadow-lg">
-                <div class="text-center mb-6">
-                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-2"></div>
-                    <h2 class="text-lg font-bold">NAMA LENGKAP</h2>
-                    <p class="text-gray-600">NIK<br>Surabaya</p>
+            <aside class="w-64 bg-white p-5 shadow-md">
+                <div class="text-center mb-8">
+                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto"></div>
+                    <h2 class="text-xl font-semibold mt-4">{{ Auth::user()->nama_lengkap }}</h2> <!-- Menampilkan nama dari database -->
+                    <p class="text-gray-600">{{ Auth::user()->nik }}</p>
+                    <p class="text-gray-600">{{ Auth::user()->alamat }}
                 </div>
                 <nav>
                     <ul class="space-y-4">
@@ -92,7 +93,7 @@
         </div>
     </div>
     <footer class="bg-blue-600 text-white text-center py-4">
-        © 2024 ALL RIGHTS RESERVED
+        ©️ 2024 ALL RIGHTS RESERVED
     </footer>
 
     <script>

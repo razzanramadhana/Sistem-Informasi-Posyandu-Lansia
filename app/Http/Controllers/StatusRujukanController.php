@@ -1,37 +1,26 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Rujukan;
-use Illuminate\Http\Request;
+use App\Models\Lansia; // Import Lansia model
 use Illuminate\Support\Facades\Auth;
 
 class StatusRujukanController extends Controller
 {
     public function index()
     {
-        // Get the currently authenticated user
-        $user = Auth::user();
+        // Ambil ID pengguna yang sedang login
+        $my_id = Auth::id(); // Dapatkan ID pengguna yang sedang login
 
-        // Check if the user has the 'wali' role
-        if ($user && $user->role === 'wali') {
-            // Fetch rujukan data for the elderly associated with the guardian (wali)
-            $rujukan = Rujukan::whereHas('kunjungan.lansia', function ($query) use ($user) {
-                $query->where('id_user', $user->id);
-            })
-            ->with(['kunjungan.lansia', 'rumah_sakit'])
-            ->get();
+        // Ambil data lansia yang dimiliki oleh pengguna yang sedang login
+        $lansiaList = Lansia::where('id_user', $my_id)->pluck('id_lansia'); // Ambil id_lansia saja
 
-            // If no rujukan found, we'll pass an empty collection
-            if ($rujukan->isEmpty()) {
-                $rujukan = collect();
-            }
+        // Ambil rujukan berdasarkan id_lansia yang dimiliki oleh pengguna
+        $rujukanlist = Rujukan::whereIn('id_lansia', $lansiaList)
+            ->with(['lansia', 'rumah_sakit'])
+            ->get(['id_rujukan', 'id_lansia', 'status_rujukan', 'id_rumah_sakit']);
 
-            // Return view with the fetched data
-            return view('status rujukan', compact('rujukan'));
-        } else {
-            // If the user is not a guardian, redirect back or return an error
-            return redirect()->back()->with('error', 'You do not have permission to view this data.');
-        }
+        // Kirim data rujukan ke view
+        return view('status rujukan', ['rujukanlist' => $rujukanlist]);
     }
 }

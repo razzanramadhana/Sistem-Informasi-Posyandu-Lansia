@@ -20,14 +20,15 @@ class Rujukan extends Model
         'status_rujukan',
     ];
 
-    public function rumah_sakit()
-    {
-        return $this->belongsTo(RumahSakit::class, 'id_rumah_sakit', 'id_rumah_sakit');
-    }
-
     public function lansia()
     {
         return $this->belongsTo(Lansia::class, 'id_lansia', 'id_lansia');
+    }
+
+    // Relationship to the RumahSakit model
+    public function rumah_sakit()
+    {
+        return $this->belongsTo(RumahSakit::class, 'id_rumah_sakit', 'id_rumah_sakit');
     }
 
 

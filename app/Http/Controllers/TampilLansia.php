@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lansia;
-use Illuminate\Http\Request;
+use App\Models\Lansia; // Pastikan untuk mengimpor model Lansia
+use Illuminate\Support\Facades\Auth;
 
 class TampilLansia extends Controller
 {
     public function index()
     {
-        // Get all Lansia data, excluding id_lansia and id_user
-        $lansias = Lansia::all(['nama', 'tanggal_lahir', 'jenis_kelamin', 'alamat', 'alergi_obat', 'riwayat_penyakit', 'vaksin', 'no_telpon', 'diagnosa', 'obat_yang_diberikan', 'nik_lansia']);
+        // Ambil ID pengguna yang sedang login
+        $my_id = Auth::id(); // Dapatkan ID pengguna yang sedang login
 
-        // Return the view with the Lansia data
-        return view('profil lansia', compact('lansias'));
+        // Ambil data lansia berdasarkan id_user
+        $data_lansia = Lansia::where('id_user', $my_id)->get(); // Pastikan 'id_user' sesuai dengan nama kolom di database Anda
+
+        // Simpan data lansia dalam array untuk dikirim ke view
+        $data_return['lansias'] = $data_lansia; // Kirim data lansia ke view
+
+        // Kembalikan view dengan data lansia
+        return view('profil lansia', $data_return);  // Pastikan nama view sesuai
     }
 }

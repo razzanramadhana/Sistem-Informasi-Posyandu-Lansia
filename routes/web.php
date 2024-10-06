@@ -88,13 +88,9 @@ use App\Http\Controllers\TambahkanLansiaController;
 Route::get('/create-lansia', [TambahkanLansiaController::class, 'create'])->name('create-lansia');
 Route::post('/store-lansia', [TambahkanLansiaController::class, 'store'])->name('store-lansia');
 
-use App\Http\Controllers\ShowHasilKesehatanController;
+use App\Http\Controllers\HasilKesehatanController;
 
-Route::get('/hasil-kesehatan', [ShowHasilKesehatanController::class, 'index'])->name('hasil.kesehatan');
-
-use App\Http\Controllers\StatusRujukanController;
-
-Route::get('/status-rujukan', [StatusRujukanController::class, 'index'])->name('status.rujukan');
+Route::get('/hasil-kesehatan', [HasilKesehatanController::class, 'index'])->name('hasil.kesehatan');
 
 
 use App\Http\Controllers\DataLansiaController;
@@ -109,4 +105,12 @@ Route::put('rujukan/{rujukan}', [RujukanController::class, 'update'])->name('ruj
 Route::get('rujukan/fetchKunjungan', [RujukanController::class, 'fetchKunjungan'])->name('rujukan.fetchKunjungan');
 Route::get('/lansia/{id}', [DataLansiaController::class, 'show'])->name('lansia.showdarirujukan');
 
+
+use App\Http\Controllers\StatusRujukanController;
+
+Route::get('/status-rujukan', [StatusRujukanController::class, 'index'])->name('status rujukan');
+
+use App\Http\Controllers\JadwalNakesController;
+
+Route::get('/jadwal-nakes', [JadwalNakesController::class, 'index'])->name('jadwal.nakes');
 

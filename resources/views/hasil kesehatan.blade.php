@@ -43,6 +43,7 @@
                     <table class="min-w-full bg-white border border-gray-300">
                         <thead>
                             <tr>
+                                <th class="border border-gray-300 p-2">Nama Lansia</th> <!-- New column for Elderly's Name -->
                                 <th class="border border-gray-300 p-2">Tanggal Check Up</th>
                                 <th class="border border-gray-300 p-2">Tekanan Darah</th>
                                 <th class="border border-gray-300 p-2">Berat Badan</th>
@@ -55,6 +56,7 @@
                         <tbody>
                             @foreach($hasilKesehatan as $hasil)
                                 <tr>
+                                    <td class="border border-gray-300 p-2">{{ $hasil->lansia->nama }}</td> <!-- Display Elderly's Name -->
                                     <td class="border border-gray-300 p-2">{{ $hasil->kunjungan->tanggal_kunjungan }}</td>
                                     <td class="border border-gray-300 p-2">{{ $hasil->tekanan_darah }}</td>
                                     <td class="border border-gray-300 p-2">{{ $hasil->berat_badan }}</td>
