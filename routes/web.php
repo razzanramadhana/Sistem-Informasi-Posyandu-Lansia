@@ -101,3 +101,12 @@ use App\Http\Controllers\DataLansiaController;
 
 Route::get('/data-pasien', [DataLansiaController::class, 'index'])->name('data pasien');
 Route::get('/data-pasien/{id}', [DataLansiaController::class, 'show'])->name('detail pasien');
+
+use App\Http\Controllers\RujukanController;
+
+Route::resource('/rujukan', RujukanController::class);
+Route::put('rujukan/{rujukan}', [RujukanController::class, 'update'])->name('rujukan.update');
+Route::get('rujukan/fetchKunjungan', [RujukanController::class, 'fetchKunjungan'])->name('rujukan.fetchKunjungan');
+Route::get('/lansia/{id}', [DataLansiaController::class, 'show'])->name('lansia.showdarirujukan');
+
+

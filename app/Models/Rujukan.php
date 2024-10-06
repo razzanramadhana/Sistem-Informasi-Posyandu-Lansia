@@ -14,18 +14,22 @@ class Rujukan extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'id_lansia',
+        'id_rujukan',
         'id_rumah_sakit',
-        'id_kunjungan',
         'status_rujukan',
     ];
 
     public function rumah_sakit()
     {
-        return $this->belongsTo(Rumah_Sakit::class, 'id_rumah_sakit', 'id_rumah_sakit');
+        return $this->belongsTo(RumahSakit::class, 'id_rumah_sakit', 'id_rumah_sakit');
     }
 
-    public function kunjungan()
+    public function lansia()
     {
-        return $this->belongsTo(Kunjungan::class, 'id_kunjungan', 'id_kunjungan');
+        return $this->belongsTo(Lansia::class, 'id_lansia', 'id_lansia');
     }
+
+
+
 }

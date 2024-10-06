@@ -29,4 +29,10 @@ class DataLansiaController extends Controller
         }
         return view('detail pasien', compact('lansia','umur')); // Mengirim data lansia ke view 'detail-pasien'
     }
+
+    public function showdarirujukan($id)
+    {
+        $lansia = Lansia::findOrFail($id);
+        return view('lansia.show', compact('lansia'));
+    }
 }
