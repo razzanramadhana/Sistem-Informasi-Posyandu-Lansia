@@ -99,5 +99,5 @@ Route::get('/status-rujukan', [StatusRujukanController::class, 'index'])->name('
 
 use App\Http\Controllers\DataLansiaController;
 
-Route::get('data-pasien', [DataLansiaController::class, 'index'])->name('data pasien');
-
+Route::get('/data-pasien', [DataLansiaController::class, 'index'])->name('data pasien');
+Route::get('/data-pasien/{id}', [DataLansiaController::class, 'show'])->name('detail pasien');

@@ -60,12 +60,13 @@
                                 <td class="p-3 border border-gray-300">{{ $lansia->id_lansia }}</td>
                                 <td class="p-3 border border-gray-300">{{ $lansia->nama }}</td>
                                 <td class="p-3 border border-gray-300">{{ $lansia->jenis_kelamin }}</td>
-                                <td class="p-3 border border-gray-300">{{ $lansia->nama_wali }}</td>
+                                <td class="p-3 border border-gray-300">{{ $lansia->user->nama_lengkap }}</td>
                                 <td class="p-3 border border-gray-300">{{ $lansia->diagnosa }}</td> <!-- Menampilkan Diagnosa -->
                                 <td class="p-3 border border-gray-300">
-                                    <a href="{{ route('detail-pasien', $lansia->id_lansia) }}"><button class="bg-yellow-500 text-white py-1 px-3 rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out">Detail</button></a>
+                                    <a href="{{ route('detail pasien', $lansia->id_lansia) }}">
+                                        <button class="bg-yellow-500 text-white py-1 px-3 rounded-lg hover:bg-yellow-600 transition duration-200 ease-in-out">Detail</button>
+                                    </a>
                                 </td>
-                            </tr>
                             @endforeach
                         </tbody>
                     </table>

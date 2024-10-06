@@ -35,6 +35,6 @@ class ShowHasilKesehatanController extends Controller
         dd($hasilKesehatan->toArray());
 
         // Return view with the fetched data
-        return view('hasil_kesehatan', compact('hasilKesehatan'));
+        return view('hasil kesehatan', compact('hasilKesehatan'));
     }
 }

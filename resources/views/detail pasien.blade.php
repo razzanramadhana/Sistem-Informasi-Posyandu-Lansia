@@ -28,7 +28,7 @@
 
                 <nav>
                     <ul class="space-y-4">
-                    <li>
+                        <li>
                             <a href="jadwal-nakes" class="text-black hover:bg-yellow-500 block p-3 rounded-lg transition duration-200 ease-in-out">Jadwal Nakes</a>
                         </li>
                         <li>
@@ -54,15 +54,16 @@
 
                     <!-- Detail Lansia -->
                     <div class="text-lg space-y-4">
-                        <p><span class="font-bold">Nama Lansia:</span> Ahmad Fajar Pratama</p>
-                        <p><span class="font-bold">NIK:</span> 345678XXXX</p>
-                        <p><span class="font-bold">Nama Wali:</span> Siti Nurhaliza Ahmad</p>
-                        <p><span class="font-bold">Umur:</span> 88 Tahun</p>
-                        <p><span class="font-bold">Tanggal Lahir:</span> 1 Januari 1936</p>
-                        <p><span class="font-bold">Jenis Kelamin:</span> Laki-laki</p>
-                        <p><span class="font-bold">Nomor Telepon:</span> 08123456789</p>
-                        <p><span class="font-bold">Alamat:</span> Jl. Melati No. 10, Jakarta</p>
-                        <p><span class="font-bold">Alergi Obat:</span> Penicillin</p>
+                        <p><span class="font-bold">Nama Lansia:</span> {{ $lansia->nama }}</p>
+                        <p><span class="font-bold">NIK:</span> {{ $lansia->nik_lansia }}</p>
+                        <p><span class="font-bold">Nama Wali:</span> {{ $lansia->user->nama_lengkap }}</p>
+                        <p><span class="font-bold">Umur:</span> {{ $umur }} tahun</p>
+                        <p><span class="font-bold">Tanggal Lahir:</span> {{ $lansia->tanggal_lahir }}</p>
+                        <p><span class="font-bold">Jenis Kelamin:</span> {{ $lansia->jenis_kelamin }}</p>
+                        <p><span class="font-bold">Nomor Telepon:</span> {{ $lansia->no_telpon }}</p>
+                        <p><span class="font-bold">Alamat:</span> {{ $lansia->alamat }}</p>
+                        <p><span class="font-bold">Alergi Obat:</span> {{ $lansia->alergi_obat }}</p>
+                        <p><span class="font-bold">Diagnosa</span> {{ $lansia->diagnosa }}</p>
                     </div>
                 </div>
             </div>
