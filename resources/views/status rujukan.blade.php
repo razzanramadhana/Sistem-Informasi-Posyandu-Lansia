@@ -8,21 +8,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
-    <div class="flex flex-col h-screen">
-        <!-- Header -->
-        <header class="bg-blue-700 text-white p-5 flex justify-between items-center">
-            <a href="/dashboard" class="text-xl">
-                <h1>Sistem Informasi Posyandu Lansia Terpadu</h1>
-            </a>
-            <a href="/" class="text-white text-lg font-bold">Log Out</a>
-        </header>
+    <div class="flex flex-col min-h-screen">
+            <header class="bg-blue-600 text-white p-5 flex justify-between items-center">
+                <a href="/dashboard" class="text-xl">
+                    <h1>Sistem Informasi Posyandu Lansia Terpadu</h1>
+                </a>
+                <a href="/" class="text-white font-bold">Log Out</a>
+            </header>
 
-        <div class="flex flex-1">
-            <!-- Sidebar -->
-            <aside class="bg-white w-64 p-5 shadow-lg">
-                <div class="text-center mb-6">
-                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-2"></div>
-                    <h2 class="text-lg font-bold">{{ Auth::user()->nama_lengkap }}</h2>
+            <div class="flex flex-1">
+            <aside class="w-64 bg-white p-5 shadow-md">
+            <div class="text-center mb-8">
+                    <h2 class="text-xl font-semibold mt-4">{{ Auth::user()->nama_lengkap }}</h2>
                     <p class="text-gray-600">{{ Auth::user()->nik }}</p>
                     <p class="text-gray-600">{{ Auth::user()->alamat }}</p>
                 </div>

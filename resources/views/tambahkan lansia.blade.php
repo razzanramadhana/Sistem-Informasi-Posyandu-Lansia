@@ -20,7 +20,6 @@
         <div class="flex flex-1">
             <aside class="w-64 bg-white p-5 shadow-md">
                 <div class="text-center mb-8">
-                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto"></div>
                     <h2 class="text-xl font-semibold mt-4">{{ Auth::user()->nama_lengkap }}</h2> <!-- Menampilkan nama dari database -->
                     <p class="text-gray-600">{{ Auth::user()->nik }}</p>
                     <p class="text-gray-600">{{ Auth::user()->alamat }}

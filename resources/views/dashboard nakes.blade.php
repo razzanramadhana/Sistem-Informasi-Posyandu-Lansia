@@ -8,19 +8,18 @@
 </head>
 <body class="bg-gray-100 font-sans">
     <div class="flex flex-col min-h-screen">
-        <header class="bg-blue-600 text-white p-5 flex justify-between items-center rounded-lg">
-            <a href="/dashboard-nakes" class="text-xl">
-                <h1>Sistem Informasi Posyandu Lansia Terpadu</h1>
-            </a>
+        <!-- Header -->
+        <header class="bg-blue-600 text-white p-5 flex justify-between items-center rounded-">
+            <h1 class="text-xl">Sistem Informasi Posyandu Lansia Terpadu</h1>
             <a href="/" class="text-white font-bold">Log Out</a>
         </header>
 
         <div class="flex flex-1">
             <aside class="bg-white w-64 p-5 shadow-md">
                 <div class="text-center mb-8">
-                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
-                    <h2 class="text-lg font-bold">NAMA LENGKAP</h2>
-                    <p class="text-gray-500 text-sm">ID NAKES <br>Perawat Posyandu</p>
+                    <h2 class="text-xl font-semibold mt-4">{{ Auth::user()->nama_lengkap }}</h2> <!-- Menampilkan nama dari database -->
+                    <p class="text-gray-600">{{ Auth::user()->nik }}</p>
+                    <p class="text-gray-600">{{ Auth::user()->alamat }}
                 </div>
 
                 <nav>

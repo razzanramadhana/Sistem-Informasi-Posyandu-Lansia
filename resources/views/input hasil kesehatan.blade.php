@@ -6,34 +6,32 @@
     <title>Sistem Informasi Posyandu Lansia</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans">
-    <div class="flex flex-col min-h-screen">
-        <!-- Header -->
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <div class="flex flex-col flex-1">
         <header class="bg-blue-600 text-white p-5 flex justify-between items-center">
-            <a href="dashboard-nakes" class="text-xl">
+            <a href="/dashboard" class="text-xl">
                 <h1>Sistem Informasi Posyandu Lansia Terpadu</h1>
             </a>
-            <a href="/" class="text-white font-bold">Log Out</a>
+            <a href="/" class="text-white text-lg font-bold">Log Out</a>
         </header>
 
-        <!-- Main content -->
         <div class="flex flex-1">
-            <!-- Sidebar -->
-            <aside class="bg-white w-64 p-5 shadow-md">
+    <!-- Sidebar -->
+            <aside class="w-64 bg-white p-5 shadow-md flex-none"> <!-- flex-none untuk mencegah ukuran sidebar berubah -->
                 <div class="text-center mb-8">
-                    <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
-                    <h2 class="text-lg font-bold">NAMA LENGKAP</h2>
-                    <p class="text-gray-500 text-sm">ID NAKES<br>Perawat Posyandu</p>
+                    <h2 class="text-xl font-semibold mt-4">{{ Auth::user()->nama_lengkap }}</h2> <!-- Menampilkan nama dari database -->
+                    <p class="text-gray-600">{{ Auth::user()->nik }}</p>
+                    <p class="text-gray-600">{{ Auth::user()->alamat }}
                 </div>
 
                 <!-- Navigation -->
                 <nav>
                     <ul class="space-y-4">
                         <li>
-                            <a href="jadwal-nakes" class="text-black hover:bg-yellow-500 bg-yellow-500 block p-3 rounded-lg transition duration-200 ease-in-out">Jadwal Nakes</a>
+                            <a href="jadwal-nakes" class="text-black hover:bg-yellow-500 block p-3 rounded-lg transition duration-200 ease-in-out">Jadwal Nakes</a>
                         </li>
                         <li>
-                            <a href="input-hasil-kesehatan" class="text-black hover:bg-yellow-500 block p-3 rounded-lg transition duration-200 ease-in-out">Input Hasil Kesehatan</a>
+                            <a href="input-hasil-kesehatan" class="text-black hover:bg-yellow-500 bg-yellow-500 block p-3 rounded-lg transition duration-200 ease-in-out">Input Hasil Kesehatan</a>
                         </li>
                         <li>
                             <a href="rujukan" class="text-black hover:bg-yellow-500 block p-3 rounded-lg transition duration-200 ease-in-out">Rujukan</a>

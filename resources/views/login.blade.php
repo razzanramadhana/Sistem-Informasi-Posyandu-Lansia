@@ -37,10 +37,6 @@
                 <input type="email" name="email" placeholder="Email" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
                 <input type="password" name="password" placeholder="Minimal 8 karakter" class="w-full p-3 mb-4 border border-gray-300 rounded-md" required>
                 
-                <div class="text-right mb-4">
-                    <a href="#" class="text-blue-500 hover:underline">Lupa kata sandi?</a>
-                </div>
-                
                 <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700">Masuk</button>
             </form>
             
